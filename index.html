@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard ordini | Home</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="CSS/style.css">
+        <link rel="stylesheet" href="CSS/utility.css">
+        <link rel="stylesheet" href="CSS/root.css">
+        <!-- Lucide Icon -->
+        <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    </head>
+    <body>
+        <!-- header -->
+        <header class="flexCenter">
+            <!-- header left -->
+            <div class="headerLeft">
+                <ul class="flexCenter">
+                    <li class="logoBG">
+                        <svg
+                            id="logo"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-package-icon lucide-package"
+                        >
+                            <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/>
+                            <path d="M12 22V12"/>
+                            <polyline points="3.29 7 12 12 20.71 7"/>
+                            <path d="m7.5 4.27 9 5.15"/>
+                        </svg>
+                    </li>
+                    <li>
+                        <h3 class="white FontS20">Dashboard Ordini</h3>
+                    </li>
+                </ul>
+            </div>
+            <!-- header right -->
+            <div class="headerRightPC">
+                <ul class="menuPC flexCenter">
+                    <li>
+                        <a href="index.html" class="link active FontS20">Home</a>
+                    </li>
+                    <li>
+                        <a href="menu/ordini.html" class="link FontS20">Ordini</a>
+                    </li>
+                    <li>
+                        <a href="menu/clienti.html" class="link FontS20">Clienti</a>
+                    </li>
+                    <li>
+                        <a href="menu/magazzino.html" class="link FontS20">Magazzino</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="headerRightMobile">
+                <ul class="nav-bar">
+                    <input type="checkbox" id="check">
+                    <span class="menu">
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="menu/ordini.html">Ordini</a>
+                        </li>
+                        <li>
+                            <a href="menu/clienti.html">Clienti</a>
+                        </li>
+                        <li>
+                            <a href="menu/magazzino.html">Magazzino</a>
+                        </li>
+                        <label for="check" class="close-menu white">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="lucide lucide-x-icon lucide-x"
+                            >
+                                <path d="M18 6 6 18"/>
+                                <path d="m6 6 12 12"/>
+                            </svg>
+                        </label>
+                    </span>
+                    <label for="check" class="open-menu white">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-menu-icon lucide-menu"
+                        >
+                            <path d="M4 5h16"/>
+                            <path d="M4 12h16"/>
+                            <path d="M4 19h16"/>
+                        </svg>
+                    </label>
+                </ul>
+            </div>
+        </header>
+        <!-- contenuto principale -->
+        <main class="container">
+            <div id="overlay">
+                <div class="finestraFiltri white">
+                    <div class="header spaceBetween">
+                        <div class="headerLeft">
+                            <h3>Filtro ordini</h3>
+                            <p>
+                                Visualizza gli ordini con i tuoi 
+                                specifici criteri
+                            </p>
+                        </div>
+                        <div class="headerRight">
+                            <svg
+                                id="closeFilter"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="lucide lucide-x-icon lucide-x
+                                pointer"
+                            >
+                                <path d="M18 6 6 18"/>
+                                <path d="m6 6 12 12"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="statoOrdine">
+                        <h3 class="titleOrdine">Stato ordine:</h3>
+                        <ul class="listaStati flex">
+                            <li class="checkStato pointer">
+                                <input type="checkbox" value="attesa" class="inputStato">
+                                Attesa
+                            </li>
+                            <li class="checkStato pointer">
+                                <input type="checkbox" value="spedito" class="inputStato">
+                                Spedito
+                            </li>
+                            <li class="checkStato pointer">
+                                <input type="checkbox" value="annullato" class="inputStato">
+                                Annullato
+                            </li>
+                            <li class="checkStato pointer">
+                                <input type="checkbox" value="consegnato" class="inputStato">
+                                Consegnato
+                            </li>
+                            <li class="checkStato pointer">
+                                <input type="checkbox" value="tutti" class="inputStato">
+                                Tutti
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="tabellaOrdini">
+                <div class="headerTabella spaceBetween">
+                    <div class="headerTabellaLeft">
+                        <h3 class="ordiniTitle white">Ordini recenti</h3>
+                    </div>
+                    <div class="headerTabellaRight">
+                        <button class="ordiniBtn white pointer" id="btnFiltra">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="lucide lucide-list-filter-icon lucide-list-filter
+                        iconaFiltro"
+                            >
+                                <path d="M2 5h20"/>
+                                <path d="M6 12h12"/>
+                                <path d="M9 19h6"/>
+                            </svg>
+                            Filtra
+                        </button>
+                    </div>
+                </div>
+                <div class="white">
+                    <table>
+                        <!-- titoli -->
+                        <thead>
+                            <tr>
+                                <td>id-ordine</td>
+                                <td>cliente</td>
+                                <td>data</td>
+                                <td>stato</td>
+                                <td>totale</td>
+                            </tr>
+                        </thead>
+                        <!-- dati ordini -->
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                    <div class="footer-table spaceBetween">
+                        <p id="pageInfo">5 su 20 risultati</p>
+                        <div class="nav-btns">
+                            <button id="prevBtn" class="btnPrev pointer" onclick="changePage(-1)">
+                                Indietro
+                            </button>
+                            <button id="nextBtn" class="btnNext pointer" onclick="changePage(1)">
+                                Avanti
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- JS -->
+        <script src="JS/dataOrders.js"></script>
+        <script src="JS/script.js"></script>
+        <script src="JS/btnFiltro.js"></script>
+    </body>
+</html>

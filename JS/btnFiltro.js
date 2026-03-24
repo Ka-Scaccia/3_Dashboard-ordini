@@ -1,0 +1,1 @@
+const btnFiltra=document.getElementById("btnFiltra"),overlay=document.getElementById("overlay"),closeIcon=document.getElementById("closeFilter");btnFiltra.addEventListener("click",(()=>overlay.style.display="block")),closeIcon.addEventListener("click",(()=>overlay.style.display="none"));

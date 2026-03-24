@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard ordini | Clienti</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="../CSS/style.css">
+        <link rel="stylesheet" href="../CSS/utility.css">
+        <link rel="stylesheet" href="../CSS/root.css">
+        <link rel="stylesheet" href="../CSS/clientiEmagazzino.css">
+        <!-- Lucide Icon -->
+        <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    </head>
+    <body>
+        <!-- header -->
+        <header class="flexCenter">
+            <!-- left -->
+            <div class="headerLeft">
+                <ul class="flexCenter">
+                    <li class="logoBG">
+                        <svg
+                            id="logo"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-package-icon lucide-package"
+                        >
+                            <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/>
+                            <path d="M12 22V12"/>
+                            <polyline points="3.29 7 12 12 20.71 7"/>
+                            <path d="m7.5 4.27 9 5.15"/>
+                        </svg>
+                    </li>
+                    <li>
+                        <h3 class="white FontS20">Dashboard Ordini</h3>
+                    </li>
+                </ul>
+            </div>
+            <!-- right -->
+            <div class="headerRightPC">
+                <ul class="menuPC flexCenter">
+                    <li>
+                        <a href="../index.html" class="link FontS20">Home</a>
+                    </li>
+                    <li>
+                        <a href="ordini.html" class="link FontS20">Ordini</a>
+                    </li>
+                    <li>
+                        <a href="clienti.html" class="link active FontS20">Clienti</a>
+                    </li>
+                    <li>
+                        <a href="magazzino.html" class="link FontS20">Magazzino</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="headerRightMobile">
+                <ul class="nav-bar">
+                    <input type="checkbox" id="check">
+                    <span class="menu">
+                        <li>
+                            <a href="../index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="ordini.html">Ordini</a>
+                        </li>
+                        <li>
+                            <a href="clienti.html">Clienti</a>
+                        </li>
+                        <li>
+                            <a href="magazzino.html">Magazzino</a>
+                        </li>
+                        <label for="check" class="close-menu white">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="lucide lucide-x-icon lucide-x"
+                            >
+                                <path d="M18 6 6 18"/>
+                                <path d="m6 6 12 12"/>
+                            </svg>
+                        </label>
+                    </span>
+                    <label for="check" class="open-menu white">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-menu-icon lucide-menu"
+                        >
+                            <path d="M4 5h16"/>
+                            <path d="M4 12h16"/>
+                            <path d="M4 19h16"/>
+                        </svg>
+                    </label>
+                </ul>
+            </div>
+        </header>
+        <!-- contenuto principale -->
+        <main class="container">
+            <!-- header -->
+            <div class="header flex" id="headerClienti">
+                <!-- header left -->
+                <div class="headerLeft">
+                    <h1 class="white">Clienti</h1>
+                    <p class="bioHeader grey">
+                        Gestisci le relazioni con i tuoi clienti e 
+                    vedi i loro dettagli
+                    </p>
+                </div>
+                <!-- header right -->
+                <div class="headerRight">
+                    <button class="btnAdd white" id="aggiungiCliente">Aggiungi cliente</button>
+                </div>
+            </div>
+            <!-- tabella clienti -->
+            <div class="table" id="tabellaClienti">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Cliente</td>
+                            <td>Email</td>
+                            <td>Ordini totali</td>
+                            <td>Spesa totale</td>
+                            <td>Stato</td>
+                            <td>Elimina</td>
+                        </tr>
+                    </thead>
+                    <tbody id="elencoClienti" class="listaTabella">
+                        <tr class="rigaTabella" data-name="Jane Smith">
+                            <td>
+                                <h3 class="white">Jane Smith</h3>
+                                <p class="grey">Entrato a Gen 2023</p>
+                            </td>
+                            <td>
+                                <p class="grey">janesmith@example.com</p>
+                            </td>
+                            <td>
+                                <p class="grey">12</p>
+                            </td>
+                            <td>
+                                <h3 class="white">1.240.000&euro;</h3>
+                            </td>
+                            <td>
+                                <span class="stato vip">vip</span>
+                            </td>
+                            <td class="grey cellaElimina">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="lucide lucide-trash-icon lucide-trash
+                                    eliminaRiga pointer"
+                                    data-name="Jane Smith"
+                                >
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+                                    <path d="M3 6h18"/>
+                                    <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                </svg>
+                            </td>
+                        </tr>
+                        <tr class="rigaTabella" data-name="Marcus Kane">
+                            <td>
+                                <h3 class="white">Marcus Kane</h3>
+                                <p class="grey">Entrato a Mar 2023</p>
+                            </td>
+                            <td>
+                                <p class="grey">marcuskane@example.com</p>
+                            </td>
+                            <td>
+                                <p class="grey">5</p>
+                            </td>
+                            <td>
+                                <h3 class="white">450.250&euro;</h3>
+                            </td>
+                            <td>
+                                <span class="stato attivo">attivo</span>
+                            </td>
+                            <td class="grey cellaElimina">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="lucide lucide-trash-icon lucide-trash
+                                    eliminaRiga pointer"
+                                    data-name="Marcus Kane"
+                                >
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+                                    <path d="M3 6h18"/>
+                                    <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                </svg>
+                            </td>
+                        </tr>
+                        <tr class="rigaTabella" data-name="Elena Davis">
+                            <td>
+                                <h3 class="white">Elena Davis</h3>
+                                <p class="grey">Entrata a Ago 2025</p>
+                            </td>
+                            <td>
+                                <p class="grey">elenadavis@example.com</p>
+                            </td>
+                            <td>
+                                <p class="grey">0</p>
+                            </td>
+                            <td>
+                                <h3 class="white">0.00&euro;</h3>
+                            </td>
+                            <td>
+                                <span class="stato inattivo">inattivo</span>
+                            </td>
+                            <td class="grey cellaElimina">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="lucide lucide-trash-icon lucide-trash
+                                    eliminaRiga pointer"
+                                    data-name="Elena Davis"
+                                >
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+                                    <path d="M3 6h18"/>
+                                    <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                </svg>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- schermata per aggiungere nuovo cliente -->
+            <div class="nuovaRiga" id="addCustomer">
+                <!-- header -->
+                <div class="nuovaRiga_header flex">
+                    <p id="backToCustomer">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-move-left-icon lucide-move-left
+                            toBack_icon"
+                        >
+                            <path d="M6 8L2 12L6 16"/>
+                            <path d="M2 12H22"/>
+                        </svg>
+                        Torna ai Clienti
+                    </p>
+                    <h1 class="white">Aggiungi nuovo cliente</h1>
+                    <p class="grey">Crea un nuovo profilo</p>
+                </div>
+                <div class="nuovaRiga_body">
+                    <h2 class="white flex titleSection">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-user-icon lucide-user
+                            icon"
+                        >
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        Informazioni personali
+                    </h2>
+                    <div class="nuovaRiga_form flex grey">
+                        <div class="inputBox flex">
+                            <label>Nome Completo</label>
+                            <input
+                                type="text"
+                                placeholder="John Doe"
+                                class="grey"
+                                id="nomeNuovoCliente"
+                            >
+                        </div>
+                        <div class="inputBox flex">
+                            <label>Indirizzo Email</label>
+                            <input
+                                type="text"
+                                placeholder="johndoe@example.com"
+                                class="grey"
+                                id="emailNuovoCliente"
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="nuovaRiga_footer flex">
+                    <button class="btnNewRow save white" id="saveNewCustomer">Salva</button>
+                </div>
+            </div>
+        </main>
+        <!-- JS -->
+        <script src="../JS/deleteRow.js"></script>
+        <script src="../JS/gestioneClienti.js"></script>
+    </body>
+</html>

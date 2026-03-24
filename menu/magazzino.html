@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard ordini | Magazzino</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="../CSS/style.css">
+        <link rel="stylesheet" href="../CSS/utility.css">
+        <link rel="stylesheet" href="../CSS/root.css">
+        <link rel="stylesheet" href="../CSS/clientiEmagazzino.css">
+        <!-- Lucide Icon -->
+        <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    </head>
+    <body>
+        <!-- header -->
+        <header class="flexCenter">
+            <!-- left -->
+            <div class="headerLeft">
+                <ul class="flexCenter">
+                    <li class="logoBG">
+                        <svg
+                            id="logo"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-package-icon lucide-package"
+                        >
+                            <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/>
+                            <path d="M12 22V12"/>
+                            <polyline points="3.29 7 12 12 20.71 7"/>
+                            <path d="m7.5 4.27 9 5.15"/>
+                        </svg>
+                    </li>
+                    <li>
+                        <h3 class="white FontS20">Dashboard Ordini</h3>
+                    </li>
+                </ul>
+            </div>
+            <!-- right -->
+            <div class="headerRightPC">
+                <ul class="menuPC flexCenter">
+                    <li>
+                        <a href="../index.html" class="link FontS20">Home</a>
+                    </li>
+                    <li>
+                        <a href="ordini.html" class="link FontS20">Ordini</a>
+                    </li>
+                    <li>
+                        <a href="clienti.html" class="link FontS20">Clienti</a>
+                    </li>
+                    <li>
+                        <a href="magazzino.html" class="link active FontS20">Magazzino</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="headerRightMobile">
+                <ul class="nav-bar">
+                    <input type="checkbox" id="check">
+                    <span class="menu">
+                        <li>
+                            <a href="../index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="ordini.html">Ordini</a>
+                        </li>
+                        <li>
+                            <a href="clienti.html">Clienti</a>
+                        </li>
+                        <li>
+                            <a href="magazzino.html">Magazzino</a>
+                        </li>
+                        <label for="check" class="close-menu white">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="lucide lucide-x-icon lucide-x"
+                            >
+                                <path d="M18 6 6 18"/>
+                                <path d="m6 6 12 12"/>
+                            </svg>
+                        </label>
+                    </span>
+                    <label for="check" class="open-menu white">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-menu-icon lucide-menu"
+                        >
+                            <path d="M4 5h16"/>
+                            <path d="M4 12h16"/>
+                            <path d="M4 19h16"/>
+                        </svg>
+                    </label>
+                </ul>
+            </div>
+        </header>
+        <!-- contenuto principale -->
+        <main class="container">
+            <!-- header -->
+            <div class="header flex" id="headerMagazzino">
+                <!-- header left -->
+                <div class="headerLeft">
+                    <h1 class="white">Magazzino</h1>
+                    <p class="bioHeader grey">
+                        Gestisci i tuoi articoli
+                    </p>
+                </div>
+                <!-- header right -->
+                <div class="headerRight">
+                    <button class="btnAdd white" id="aggiungiArticolo">Aggiungi articolo</button>
+                </div>
+            </div>
+            <!-- tabella clienti -->
+            <div class="table" id="tabellaMagazzino">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Articolo</td>
+                            <td>Nome</td>
+                            <td>Codice</td>
+                            <td>Prezzo</td>
+                            <td>Stato</td>
+                            <td>Elimina</td>
+                        </tr>
+                    </thead>
+                    <tbody id="elencoArticoli" class="listaTabella">
+                        <tr class="rigaTabella" data-name="evidenziatori">
+                            <td>
+                                <img src="../img/articolo-1.webp" alt="evidenziatori" class="imgArticolo">
+                            </td>
+                            <td>
+                                <p class="white">evidenziatori</p>
+                            </td>
+                            <td>
+                                <p class="grey">CP1</p>
+                            </td>
+                            <td>
+                                <h3 class="white">12,00&euro;</h3>
+                            </td>
+                            <td>
+                                <span class="stato disponibile">disponibile</span>
+                            </td>
+                            <td class="grey cellaElimina">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="lucide lucide-trash-icon lucide-trash
+                                    eliminaRiga pointer"
+                                    data-name="evidenziatori"
+                                >
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+                                    <path d="M3 6h18"/>
+                                    <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                </svg>
+                            </td>
+                        </tr>
+                        <tr class="rigaTabella" data-name="magliette">
+                            <td>
+                                <img src="../img/articolo-2.webp" alt="magliette" class="imgArticolo">
+                            </td>
+                            <td>
+                                <p class="white">magliette</p>
+                            </td>
+                            <td>
+                                <p class="grey">CP2</p>
+                            </td>
+                            <td>
+                                <h3 class="white">20,00&euro;</h3>
+                            </td>
+                            <td>
+                                <span class="stato terminato">terminato</span>
+                            </td>
+                            <td class="grey cellaElimina">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="lucide lucide-trash-icon lucide-trash
+                                    eliminaRiga pointer"
+                                    data-name="magliette"
+                                >
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+                                    <path d="M3 6h18"/>
+                                    <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                </svg>
+                            </td>
+                        </tr>
+                        <tr class="rigaTabella" data-name="panino">
+                            <td>
+                                <img src="../img/articolo-3.webp" alt="panino" class="imgArticolo">
+                            </td>
+                            <td>
+                                <p class="white">panino</p>
+                            </td>
+                            <td>
+                                <p class="grey">CP3</p>
+                            </td>
+                            <td>
+                                <h3 class="white">6,00&euro;</h3>
+                            </td>
+                            <td>
+                                <span class="stato disponibile">disponibile</span>
+                            </td>
+                            <td class="grey cellaElimina">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="lucide lucide-trash-icon lucide-trash
+                                    eliminaRiga pointer"
+                                    data-name="panino"
+                                >
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+                                    <path d="M3 6h18"/>
+                                    <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                </svg>
+                            </td>
+                        </tr>
+                        <tr class="rigaTabella" data-name="iphone rosa">
+                            <td>
+                                <img src="../img/articolo-4.webp" alt="iphone rosa" class="imgArticolo">
+                            </td>
+                            <td>
+                                <p class="white">Iphone rosa</p>
+                            </td>
+                            <td>
+                                <p class="grey">CP4</p>
+                            </td>
+                            <td>
+                                <h3 class="white">799,000&euro;</h3>
+                            </td>
+                            <td>
+                                <span class="stato terminato">terminato</span>
+                            </td>
+                            <td class="grey cellaElimina">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="lucide lucide-trash-icon lucide-trash
+                                    eliminaRiga pointer"
+                                    data-name="iphone rosa"
+                                >
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+                                    <path d="M3 6h18"/>
+                                    <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                </svg>
+                            </td>
+                        </tr>
+                        <tr class="rigaTabella" data-name="scarpe Nike">
+                            <td>
+                                <img src="../img/articolo-5.webp" alt="scarpe Nike" class="imgArticolo">
+                            </td>
+                            <td>
+                                <p class="white">scarpe Nike</p>
+                            </td>
+                            <td>
+                                <p class="grey">CP5</p>
+                            </td>
+                            <td>
+                                <h3 class="white">100,000&euro;</h3>
+                            </td>
+                            <td>
+                                <span class="stato terminato">terminato</span>
+                            </td>
+                            <td class="grey cellaElimina">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="lucide lucide-trash-icon lucide-trash
+                                    eliminaRiga pointer"
+                                    data-name="scarpe Nike"
+                                >
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+                                    <path d="M3 6h18"/>
+                                    <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                </svg>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- schermata per aggiungere nuovo articolo -->
+            <div class="nuovaRiga" id="addGood">
+                <!-- header -->
+                <div class="nuovaRiga_header flex">
+                    <p id="backToGood">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-move-left-icon lucide-move-left
+                            toBack_icon"
+                        >
+                            <path d="M6 8L2 12L6 16"/>
+                            <path d="M2 12H22"/>
+                        </svg>
+                        Torna al magazzino
+                    </p>
+                    <h1 class="white">Aggiungi nuovo articolo</h1>
+                </div>
+                <div class="nuovaRiga_body">
+                    <h2 class="white flex titleSection">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-info-icon lucide-info
+                            icon"
+                        >
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4"/>
+                            <path d="M12 8h.01"/>
+                        </svg>
+                        Informazioni di base
+                    </h2>
+                    <div class="nuovaRiga_form flex grey">
+                        <div class="inputBox flex">
+                            <label>Nome prodotto</label>
+                            <input
+                                type="text"
+                                placeholder="maglietta Nike"
+                                class="grey"
+                                id="nomeNuovoProdotto"
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="nuovaRiga_body">
+                    <h2 class="white flex titleSection">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-circle-dollar-sign-icon lucide-circle-dollar-sign
+                            icon"
+                        >
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/>
+                            <path d="M12 18V6"/>
+                        </svg>
+                        Prezzo
+                    </h2>
+                    <div class="nuovaRiga_form flex grey">
+                        <div class="inputBox flex">
+                            <label>Prezzo</label>
+                            <input
+                                type="text"
+                                placeholder="0.00"
+                                class="grey"
+                                id="prezzoNuovoProdotto"
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="nuovaRiga_body">
+                    <h2 class="white flex titleSection">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-image-icon lucide-image
+                            icon"
+                        >
+                            <rect
+                                width="18"
+                                height="18"
+                                x="3"
+                                y="3"
+                                rx="2"
+                                ry="2"
+                            />
+                            <circle cx="9" cy="9" r="2"/>
+                            <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+                        </svg>
+                        Immagine prodotto
+                    </h2>
+                    <div class="nuovaRiga_form flex grey">
+                        <div class="inputBox flex">
+                            <label class="labelImg" for="imgNuovoProdotto">Inserire un immagine</label>
+                            <input
+                                type="file"
+                                value="Scegli img"
+                                placeholder="0.00"
+                                class="grey"
+                                id="imgNuovoProdotto"
+                                style="display: none;"
+                            >
+                        </div>
+                        <img
+                            src=""
+                            alt="img nuovo prodotto"
+                            id="coverImgProdottoNuovo"
+                            width="150"
+                            height="170"
+                        >
+                    </div>
+                </div>
+                <div class="nuovoProdotto_footer flex">
+                    <button class="btnNewRow save white" id="saveNewProduct">Salva</button>
+                </div>
+            </div>
+        </main>
+        <!-- JS -->
+        <script src="../JS/deleteRow.js"></script>
+        <script src="../JS/gestioneMagazzino.js"></script>
+    </body>
+</html>

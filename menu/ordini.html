@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard ordini | Ordini</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="../CSS/style.css">
+        <link rel="stylesheet" href="../CSS/utility.css">
+         <link rel="stylesheet" href="../CSS/root.css">
+        <link rel="stylesheet" href="../CSS/ordini.css">
+        <!-- Lucide Icon -->
+        <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    </head>
+    <body>
+        <!-- header -->
+        <header class="flexCenter">
+            <!-- left -->
+            <div class="headerLeft">
+                <ul class="flexCenter">
+                    <li class="logoBG">
+                        <svg
+                            id="logo"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-package-icon lucide-package"
+                        >
+                            <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/>
+                            <path d="M12 22V12"/>
+                            <polyline points="3.29 7 12 12 20.71 7"/>
+                            <path d="m7.5 4.27 9 5.15"/>
+                        </svg>
+                    </li>
+                    <li>
+                        <h3 class="white FontS20">Dashboard Ordini</h3>
+                    </li>
+                </ul>
+            </div>
+            <!-- right -->
+            <div class="headerRightPC">
+                <ul class="menuPC flexCenter">
+                    <li>
+                        <a href="../index.html" class="link FontS20">Home</a>
+                    </li>
+                    <li>
+                        <a href="ordini.html" class="link active FontS20">Ordini</a>
+                    </li>
+                    <li>
+                        <a href="clienti.html" class="link FontS20">Clienti</a>
+                    </li>
+                    <li>
+                        <a href="magazzino.html" class="link FontS20">Magazzino</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="headerRightMobile">
+                <ul class="nav-bar">
+                    <input type="checkbox" id="check">
+                    <span class="menu">
+                        <li>
+                            <a href="../index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="ordini.html">Ordini</a>
+                        </li>
+                        <li>
+                            <a href="clienti.html">Clienti</a>
+                        </li>
+                        <li>
+                            <a href="magazzino.html">Magazzino</a>
+                        </li>
+                        <label for="check" class="close-menu white">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="lucide lucide-x-icon lucide-x"
+                            >
+                                <path d="M18 6 6 18"/>
+                                <path d="m6 6 12 12"/>
+                            </svg>
+                        </label>
+                    </span>
+                    <label for="check" class="open-menu white">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-menu-icon lucide-menu"
+                        >
+                            <path d="M4 5h16"/>
+                            <path d="M4 12h16"/>
+                            <path d="M4 19h16"/>
+                        </svg>
+                    </label>
+                </ul>
+            </div>
+        </header>
+        <!-- contenuto principale -->
+        <main class="container">
+            <!-- header -->
+            <div class="header flex" id="headerOrdini">
+                <!-- header left -->
+                <div class="headerLeft">
+                    <h1 class="white">Gestione ordini</h1>
+                    <p class="grey">Rivedi e processa le transazioni dei tuoi clienti</p>
+                </div>
+            </div>
+            <!-- tabella ordini -->
+            <div class="tabellaOrdini" id="tabellaOrdini">
+                <div class="white">
+                    <table>
+                        <!-- titoli -->
+                        <thead>
+                            <tr>
+                                <td>id-ordine</td>
+                                <td>cliente</td>
+                                <td>data</td>
+                                <td>stato</td>
+                                <td>totale</td>
+                                <td>Modifica</td>
+                            </tr>
+                        </thead>
+                        <!-- dati ordini -->
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                    <div class="footer-table spaceBetween">
+                        <p id="pageInfo">5 su 20 risultati</p>
+                        <div class="nav-btns">
+                            <button id="prevBtn" class="btnPrev" onclick="changePage(-1)">
+                                Indietro
+                            </button>
+                            <button id="nextBtn" class="btnNext" onclick="changePage(1)">
+                                Avanti
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- schermata modifica ordine -->
+            <div class="schermataEditOrdine" id="schermataEditOrdine">
+                <!-- header ordine -->
+                <div class="headerEditOrdine">
+                    <!-- header top -->
+                    <div class="headerEditOrdine_top flex">
+                        <h1 id="nomeOrdine" class="white"></h1>
+                        <span id="statoOrdine" class="stato"></span>
+                    </div>
+                    <!-- header bottom -->
+                    <div class="headerEditOrdine_bottom flex">
+                        <p id="dataOrdine"></p>
+                        <p class="white" id="totaleOrdine">Costo totale: 0&euro;</p>
+                    </div>
+                </div>
+                <!-- body ordine -->
+                <div class="bodyEditOrdine">
+                    <h3 class="title_bodyEditOrdine white">Articoli Ordinati</h3>
+                    <!-- lista articoli -->
+                    <table>
+                        <thead>
+                            <tr>
+                                <td class="inputBox">
+                                    <input type="checkbox" class="checkArticolo" id="checkAll"
+                                    value="tutti" data-prezzo="0">
+                                    <span class="checkmark"></span>
+                                </td>
+                                <td>Prodotto</td>
+                                <td>Codice</td>
+                                <td>Quantità</td>
+                                <td>Prezzo</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="inputBox">
+                                    <input type="checkbox" class="checkArticolo" value="evidenziatori"
+                                    data-prezzo="12,00">
+                                    <span class="checkmark"></span>
+                                </td>
+                                <td class="cellaProdotto flexCenter">
+                                    <img src="../img/articolo-1.webp" alt="6 evidenziatori"
+                                    class="imgArticolo">
+                                    <h4 class="white">6 evidenziatori</h4>
+                                </td>
+                                <td class="grey">CP1</td>
+                                <td class="grey">1</td>
+                                <td class="white prezzoArticolo">12,00</td>
+                            </tr>
+                            <tr>
+                                <td class="inputBox">
+                                    <input type="checkbox" class="checkArticolo" value="magliette"
+                                    data-prezzo="20,00">
+                                    <span class="checkmark"></span>
+                                </td>
+                                <td class="cellaProdotto flexCenter">
+                                    <img src="../img/articolo-2.webp" alt="2 magliette"
+                                    class="imgArticolo">
+                                    <h4 class="white">2 magliette</h4>
+                                </td>
+                                <td class="grey">CP2</td>
+                                <td class="grey">1</td>
+                                <td class="white prezzoArticolo">20,00</td>
+                            </tr>
+                            <tr>
+                                <td class="inputBox">
+                                    <input type="checkbox" class="checkArticolo" value="panino"
+                                    data-prezzo="6,00">
+                                    <span class="checkmark"></span>
+                                </td>
+                                <td class="cellaProdotto flexCenter">
+                                    <img src="../img/articolo-3.webp" alt="panino"
+                                    class="imgArticolo">
+                                    <h4 class="white">Panino</h4>
+                                </td>
+                                <td class="grey">CP3</td>
+                                <td class="grey">1</td>
+                                <td class="white prezzoArticolo">6,00</td>
+                            </tr>
+                            <tr>
+                                <td class="inputBox">
+                                    <input type="checkbox" class="checkArticolo" value="Iphone"
+                                    data-prezzo="799,000">
+                                    <span class="checkmark"></span>
+                                </td>
+                                <td class="cellaProdotto flexCenter">
+                                    <img src="../img/articolo-4.webp" alt="Iphone rosa"
+                                    class="imgArticolo">
+                                    <h4 class="white">Iphone rosa</h4>
+                                </td>
+                                <td class="grey">CP4</td>
+                                <td class="grey">1</td>
+                                <td class="white prezzoArticolo">799,000</td>
+                            </tr>
+                            <tr>
+                                <td class="inputBox">
+                                    <input type="checkbox" class="checkArticolo" value="scarpe"
+                                    data-prezzo="100,000">
+                                    <span class="checkmark"></span>
+                                </td>
+                                <td class="cellaProdotto flexCenter">
+                                    <img src="../img/articolo-5.webp" alt="scarpe Nike"
+                                    class="imgArticolo">
+                                    <h4 class="white">Scarpe Nike</h4>
+                                </td>
+                                <td class="grey">CP5</td>
+                                <td class="grey">1</td>
+                                <td class="white prezzoArticolo">100,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- btn salva -->
+                <button id="comeBack" class="white">Torna indietro</button>
+            </div>
+        </main>
+        <!-- JS -->
+        <script src="../JS/dataOrders.js"></script>
+        <script src="../JS/script.js"></script>
+        <script src="../JS/gestioneOrdiniTab.js"></script>
+        <script src="../JS/gestioneOrdini.js"></script>
+    </body>
+</html>

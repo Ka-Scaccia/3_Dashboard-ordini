@@ -1,0 +1,1 @@
+.flex{display:flex}.flexCenter{display:flex;flex-wrap:wrap;gap:var(--spacing-medium);align-items:center}.spaceBetween{display:flex;justify-content:space-between}.container{margin:0 auto;width:80%}.grey{color:var(--color-grey)}.white{color:var(--color-white)}@media screen and (min-width:768px){.FontS20{font-size:20px}}.pointer{cursor:pointer}.absolute{position:absolute}

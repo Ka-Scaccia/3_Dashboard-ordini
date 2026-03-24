@@ -1,0 +1,1 @@
+const lista=document.getElementsByClassName("listaTabella")[0];lista.addEventListener("click",(function(e){const a=e.target.closest(".eliminaRiga");if(a){document.querySelectorAll(".rigaTabella").forEach((function(e){e.dataset.name===a.dataset.name&&(e.style.display="none")}))}}));
